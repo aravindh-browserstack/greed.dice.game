@@ -87,15 +87,15 @@ module Game
             new_score = score()
             if new_score == 0
               cur_score = 0
-              print "Score in this round: #{cur_score} \n"
+              print "Score in this round: #{new_score} \n"
               print "Total score: #{@player_score[player]}\n"
               break
             end
             cur_score += new_score
-            print "Score in this round: #{cur_score} \n"
+            print "Score in this round: #{new_score} \n"
             print "Total score: #{@player_score[player]}\n"
           else  # Anything else resorts to No
-            if cur_score >= 300 
+            if (@player_score[player] >= 300 || cur_score >=300) 
               @player_score[player] += cur_score
             end
             break
