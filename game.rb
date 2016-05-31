@@ -21,7 +21,7 @@ module Game
       }
     end
 
-    def score()
+    def score
       v = @dice.values
       v.sort!
       current_score = 0
@@ -73,18 +73,18 @@ module Game
     def play_turn(player)
       player.play(5)
       sleep 1 # slow down a bit so that user can see what's happening
-      cur_score = score()
+      cur_score = score
       print "#{player.name} rolls: " + @dice.to_s+"\n"
       print "Score in this round: #{score} \n"
       print "Total score: #{@player_score[player]}\n"
       if cur_score != 0
-        while true
+        loop do
           n = get_nonscoring_num
           choice = take_input_to_play_again(player,n)
           if choice == 'y'
             player.play(n)
             print "#{player.name} rolls: " + @dice.to_s + "\n"
-            new_score = score()
+            new_score = score
             if new_score == 0
               cur_score = 0
               print "Score in this round: #{new_score} \n"
@@ -133,7 +133,7 @@ module Game
 
     def play
       turn = 1
-      while true
+      loop do
         print "Turn #{turn}\n"
         print "------------\n"
         @players.each { |x|
